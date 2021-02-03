@@ -1,24 +1,15 @@
 import { Router } from 'express';
-import { v4 as uuid } from 'uuid';
+
+import Hero from '../models/Hero';
 
 const heroesRouter = Router();
 
-const heroes = [];
+const heroes: Hero[] = [];
 
 heroesRouter.post('/', (request, response) => {
   const { name, description, image } = request.body;
 
-  const { short, full } = description;
-
-  const hero = {
-    id: uuid(),
-    name,
-    description: {
-      short,
-      full,
-    },
-    image,
-  };
+  const hero = new Hero(name, description, image);
 
   heroes.push(hero);
 
