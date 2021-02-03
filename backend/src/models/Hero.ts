@@ -12,11 +12,7 @@ export default class Hero {
 
   image: string;
 
-  constructor(
-    name: string,
-    description: { short: string; full: string },
-    image: string,
-  ) {
+  constructor({ name, description, image }: Omit<Hero, 'id'>) {
     this.id = uuid();
     this.name = name;
     this.description = {

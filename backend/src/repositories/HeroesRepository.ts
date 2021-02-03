@@ -1,5 +1,14 @@
 import Hero from '../models/Hero';
 
+interface CreateHeroDTO {
+  name: string;
+  description: {
+    short: string;
+    full: string;
+  };
+  image: string;
+}
+
 export default class HeroesRepository {
   private heroes: Hero[];
 
@@ -11,12 +20,8 @@ export default class HeroesRepository {
     return this.heroes;
   }
 
-  public create(
-    name: string,
-    description: { short: string; full: string },
-    image: string,
-  ): Hero {
-    const hero = new Hero(name, description, image);
+  public create({ name, description, image }: CreateHeroDTO): Hero {
+    const hero = new Hero({ name, description, image });
 
     this.heroes.push(hero);
 

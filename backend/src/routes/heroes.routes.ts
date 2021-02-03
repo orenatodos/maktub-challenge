@@ -14,7 +14,7 @@ heroesRouter.get('/', (request, response) => {
 heroesRouter.post('/', (request, response) => {
   const { name, description, image } = request.body;
 
-  const hero = heroesRepository.create(name, description, image);
+  const hero = heroesRepository.create({ name, description, image });
 
   return response.json(hero);
 });
