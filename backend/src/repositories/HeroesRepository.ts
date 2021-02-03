@@ -28,4 +28,10 @@ export default class HeroesRepository {
 
     return hero;
   }
+
+  public delete(id: string): void {
+    const heroIndex = this.heroes.findIndex(index => index.id === id);
+
+    this.heroes.splice(heroIndex, 1);
+  }
 }

@@ -30,4 +30,12 @@ heroesRouter.put('/:id', (request, response) => {
   return response.json(hero);
 });
 
+heroesRouter.delete('/:id', (request, response) => {
+  const { id } = request.params;
+
+  heroesRepository.delete(id);
+
+  return response.send();
+});
+
 export default heroesRouter;
