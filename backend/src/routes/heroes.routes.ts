@@ -1,17 +1,14 @@
 import { Router } from 'express';
 
-import Hero from '../models/Hero';
+import HeroesRepository from '../repositories/HeroesRepository';
 
 const heroesRouter = Router();
-
-const heroes: Hero[] = [];
+const heroesRepository = new HeroesRepository();
 
 heroesRouter.post('/', (request, response) => {
   const { name, description, image } = request.body;
 
-  const hero = new Hero(name, description, image);
-
-  heroes.push(hero);
+  const hero = heroesRepository.create(name, description, image);
 
   return response.json(hero);
 });
