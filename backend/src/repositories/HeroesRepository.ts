@@ -11,6 +11,12 @@ export default class HeroesRepository {
     return this.heroes;
   }
 
+  public getById(id: string): Hero {
+    const heroIndex = this.heroes.findIndex(index => index.id === id);
+
+    return this.heroes[heroIndex];
+  }
+
   public create({ name, description, image }: Omit<Hero, 'id'>): Hero {
     const hero = new Hero({ name, description, image });
 

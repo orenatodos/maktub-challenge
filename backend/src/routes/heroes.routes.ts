@@ -11,6 +11,14 @@ heroesRouter.get('/', (request, response) => {
   return response.json(heroes);
 });
 
+heroesRouter.get('/:id', (request, response) => {
+  const { id } = request.params;
+
+  const hero = heroesRepository.getById(id);
+
+  return response.json(hero);
+});
+
 heroesRouter.post('/', (request, response) => {
   const { name, description, image } = request.body;
 
