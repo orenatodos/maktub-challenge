@@ -19,4 +19,15 @@ heroesRouter.post('/', (request, response) => {
   return response.json(hero);
 });
 
+heroesRouter.put('/:id', (request, response) => {
+  const { params, body } = request;
+
+  const { id } = params;
+  const { name, description, image } = body;
+
+  const hero = heroesRepository.update({ id, name, description, image });
+
+  return response.json(hero);
+});
+
 export default heroesRouter;
