@@ -1,47 +1,67 @@
 import { Router } from 'express';
+import { getRepository } from 'typeorm';
 
-import HeroesRepository from '../repositories/HeroesRepository';
+import Hero from '../models/Hero';
 
 const heroesRouter = Router();
-const heroesRepository = new HeroesRepository();
 
-heroesRouter.get('/', (request, response) => {
-  const heroes = heroesRepository.all();
+heroesRouter.get('/', async (request, response) => {
+  const heroesRepository = getRepository(Hero);
+
+  const heroes = await heroesRepository.find();
 
   return response.json(heroes);
 });
 
-heroesRouter.get('/:id', (request, response) => {
+heroesRouter.get('/:id', async (request, response) => {
   const { id } = request.params;
 
-  const hero = heroesRepository.getById(id);
+  const heroesRepository = getRepository(Hero);
+
+  const hero = await heroesRepository.findOne(id);
 
   return response.json(hero);
 });
 
-heroesRouter.post('/', (request, response) => {
-  const { name, description, image } = request.body;
+heroesRouter.post('/', async (request, response) => {
+  const { name, short_description, full_description, image } = request.body;
 
-  const hero = heroesRepository.create({ name, description, image });
+  const heroesRepository = getRepository(Hero);
 
-  return response.json(hero);
-});
+  const hero = heroesRepository.create({
+    name,
+    short_description,
+    full_description,
+    image,
+  });
 
-heroesRouter.put('/:id', (request, response) => {
-  const { params, body } = request;
-
-  const { id } = params;
-  const { name, description, image } = body;
-
-  const hero = heroesRepository.update({ id, name, description, image });
+  await heroesRepository.save(hero);
 
   return response.json(hero);
 });
 
-heroesRouter.delete('/:id', (request, response) => {
+heroesRouter.put('/:id', async (request, response) => {
+  const { id } = request.params;
+  const { name, short_description, full_description, image } = request.body;
+
+  const heroesRepository = getRepository(Hero);
+
+  const hero = await heroesRepository.update(id, {
+    name,
+    short_description,
+    full_description,
+    image,
+  });
+
+  return response.json(hero);
+});
+
+heroesRouter.delete('/:id', async (request, response) => {
   const { id } = request.params;
 
-  heroesRepository.delete(id);
+  const heroesRepository = getRepository(Hero);
+
+  await heroesRepository.delete(id);
 
   return response.send();
 });

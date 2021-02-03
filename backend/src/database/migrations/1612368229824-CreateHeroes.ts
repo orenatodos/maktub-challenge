@@ -10,6 +10,7 @@ export default class CreateHeroes1612368229824 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment',
           },
           {
