@@ -1,24 +1,19 @@
-import { v4 as uuid } from 'uuid';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity('heroes')
 export default class Hero {
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
+  @Column()
   name: string;
 
-  description: {
-    short: string;
-    full: string;
-  };
+  @Column()
+  short_description: string;
 
+  @Column()
+  full_description: string;
+
+  @Column()
   image: string;
-
-  constructor({ name, description, image }: Omit<Hero, 'id'>) {
-    this.id = uuid();
-    this.name = name;
-    this.description = {
-      short: description.short,
-      full: description.full,
-    };
-    this.image = image;
-  }
 }
