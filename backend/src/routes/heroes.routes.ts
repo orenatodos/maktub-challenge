@@ -5,6 +5,12 @@ import HeroesRepository from '../repositories/HeroesRepository';
 const heroesRouter = Router();
 const heroesRepository = new HeroesRepository();
 
+heroesRouter.get('/', (request, response) => {
+  const heroes = heroesRepository.all();
+
+  return response.json(heroes);
+});
+
 heroesRouter.post('/', (request, response) => {
   const { name, description, image } = request.body;
 

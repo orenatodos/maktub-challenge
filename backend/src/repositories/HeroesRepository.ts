@@ -7,6 +7,10 @@ export default class HeroesRepository {
     this.heroes = [];
   }
 
+  public all(): Hero[] {
+    return this.heroes;
+  }
+
   public create(
     name: string,
     description: { short: string; full: string },
