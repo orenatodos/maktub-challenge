@@ -6,6 +6,8 @@ export default {
     red: '#e74c3c',
     mainBg: '#f0f0f5',
     white: '#fff',
+    lightGray: '#a8a8b3',
+    lighterGray: '#dcdce6',
   },
   font: {
     normal: 400,
