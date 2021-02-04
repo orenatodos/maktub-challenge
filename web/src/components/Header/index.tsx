@@ -6,7 +6,9 @@ import * as S from './styles';
 export default function Header({ children }: PropsWithChildren<unknown>) {
   return (
     <S.Header>
-      <Link to="/">Maktub Heroes</Link>
+      <Link to="/" className="logo">
+        Maktub Heroes
+      </Link>
       {children}
     </S.Header>
   );
