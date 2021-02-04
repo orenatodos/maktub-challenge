@@ -17,5 +17,9 @@ export const Button = styled.button`
     &:hover {
       background: ${shade(0.2, theme.colors.primary)};
     }
+
+    > a {
+      color: currentColor;
+    }
   `}
 `;
