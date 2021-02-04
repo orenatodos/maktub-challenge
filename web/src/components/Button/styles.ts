@@ -12,6 +12,7 @@ export const Button = styled.button`
     background: ${theme.colors.primary};
     border-radius: ${theme.radius.large};
     transition: background ${theme.transitions.default};
+    padding: 0 ${theme.spacings.large};
 
     &:hover {
       background: ${shade(0.2, theme.colors.primary)};
