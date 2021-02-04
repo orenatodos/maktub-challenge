@@ -48,8 +48,8 @@ export const Content = styled.div`
         margin-bottom: ${theme.spacings.medium};
       }
 
-      ${Field} + ${Field} {
-        margin-top: ${theme.spacings.xsmall};
+      ${Field} {
+        margin-bottom: ${theme.spacings.xsmall};
       }
 
       ${Button} {
