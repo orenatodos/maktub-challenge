@@ -43,7 +43,7 @@ export default function Heroes() {
               <strong>{hero.name}</strong>
               <p>{hero.short_description}</p>
               <Button>
-                <Link to="/">Detalhes</Link>
+                <Link to={`/heroes/${hero.id}`}>Detalhes</Link>
               </Button>
             </div>
           </article>
