@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Hero = styled.main`
   ${({ theme }) => css`
-    padding: ${theme.spacings.xlarge} 0;
+    padding: ${theme.spacings.xxlarge} 0;
     display: flex;
     align-items: center;
     gap: ${theme.spacings.xxlarge};

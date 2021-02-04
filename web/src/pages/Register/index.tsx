@@ -19,18 +19,19 @@ export default function Register() {
 
   const handleSubmit = useCallback(
     async event => {
-      try {
-        event.preventDefault();
+      event.preventDefault();
 
-        await api.post('/heroes', {
-          name,
-          shortDescription,
-          fullDescription,
-          image,
-        });
-      } catch (err) {
-        console.log(err);
-      }
+      await api.post('/heroes', {
+        name,
+        short_description: shortDescription,
+        full_description: fullDescription,
+        image,
+      });
+
+      setName('');
+      setShortDescription('');
+      setFullDescription('');
+      setImage('');
     },
     [name, shortDescription, fullDescription, image],
   );
@@ -51,18 +52,21 @@ export default function Register() {
             placeholder="Nome"
             onChange={event => setName(event.target.value)}
             value={name}
+            required
           />
           <Textarea
             name="short_description"
             placeholder="Descrição curta"
             onChange={event => setShortDescription(event.target.value)}
             value={shortDescription}
+            required
           />
           <Textarea
             name="full_description"
             placeholder="Descrição longa"
             onChange={event => setFullDescription(event.target.value)}
             value={fullDescription}
+            required
           />
           <Field
             type="url"
@@ -70,6 +74,7 @@ export default function Register() {
             placeholder="URL da imagem"
             onChange={event => setImage(event.target.value)}
             value={image}
+            required
           />
           <Button type="submit">Cadastrar</Button>
         </form>

@@ -33,7 +33,7 @@ export default function Heroes() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <>

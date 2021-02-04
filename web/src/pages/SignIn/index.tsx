@@ -21,18 +21,14 @@ export default function SignIn() {
 
   const handleSubmit = useCallback(
     async event => {
-      try {
-        event.preventDefault();
+      event.preventDefault();
 
-        await signIn({
-          username,
-          password,
-        });
+      await signIn({
+        username,
+        password,
+      });
 
-        history.push('/heroes');
-      } catch (err) {
-        console.log(err);
-      }
+      history.push('/heroes');
     },
     [signIn, history, username, password],
   );
@@ -50,6 +46,7 @@ export default function SignIn() {
             onChange={event => setUsername(event.target.value)}
             value={username}
             icon={FiUser}
+            required
           />
           <Field
             type="password"
@@ -58,6 +55,7 @@ export default function SignIn() {
             onChange={event => setPassword(event.target.value)}
             value={password}
             icon={FiLock}
+            required
           />
           <Button type="submit">Entrar</Button>
         </form>

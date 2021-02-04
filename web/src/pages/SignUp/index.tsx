@@ -21,19 +21,15 @@ export default function SignUp() {
 
   const handleSubmit = useCallback(
     async event => {
-      try {
-        event.preventDefault();
+      event.preventDefault();
 
-        await api.post('/users', {
-          username,
-          password,
-          role,
-        });
+      await api.post('/users', {
+        username,
+        password,
+        role,
+      });
 
-        history.push('/');
-      } catch (err) {
-        console.log(err);
-      }
+      history.push('/');
     },
     [history, username, password, role],
   );
@@ -54,6 +50,7 @@ export default function SignUp() {
             onChange={event => setUsername(event.target.value)}
             value={username}
             icon={FiUser}
+            required
           />
           <Field
             type="password"
@@ -62,10 +59,12 @@ export default function SignUp() {
             onChange={event => setPassword(event.target.value)}
             value={password}
             icon={FiLock}
+            required
           />
           <Select
             onChange={event => setRole(event.target.value)}
             value={role}
+            required
             options={[
               {
                 value: 'admin',

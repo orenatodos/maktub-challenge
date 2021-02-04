@@ -8,7 +8,7 @@ export const Container = styled.main`
   ${({ theme }) => css`
     max-width: 60rem;
     margin: 0 auto;
-    padding: ${theme.spacings.medium} 0;
+    padding: ${theme.spacings.xxlarge} 0;
     display: flex;
     flex-direction: column;
 

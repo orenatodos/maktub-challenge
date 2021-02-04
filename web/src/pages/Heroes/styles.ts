@@ -7,7 +7,7 @@ export const Heroes = styled.main`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(27.2rem, 1fr));
     gap: ${theme.spacings.large};
-    padding: ${theme.spacings.xlarge} 0;
+    padding: ${theme.spacings.xxlarge} 0;
 
     article {
       padding: ${theme.spacings.xsmall};
