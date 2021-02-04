@@ -51,4 +51,10 @@ export default createGlobalStyle`
   ul {
     list-style: none;
   }
+
+  #root {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 ${({ theme }) => theme.spacings.small};
+  }
 `;
