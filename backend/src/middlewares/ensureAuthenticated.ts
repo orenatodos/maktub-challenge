@@ -16,13 +16,7 @@ export default function ensureAuthenticated(
 
   const [, token] = authHeader.split(' ');
 
-  try {
-    const decoded = verify(token, process.env.SECRET || 'default');
+  verify(token, process.env.SECRET || 'default');
 
-    console.log(decoded);
-
-    return next();
-  } catch (err) {
-    throw new AppError('Invalid JWT token');
-  }
+  return next();
 }
