@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 import api from '../../services/api';
 
@@ -18,6 +19,8 @@ interface Hero {
 export default function Heroes() {
   const [heroes, setHeroes] = useState<Hero[]>([]);
 
+  const { user } = useAuth();
+
   async function getData() {
     const response = await api.get('heroes');
 
@@ -31,9 +34,11 @@ export default function Heroes() {
   return (
     <>
       <Header>
-        <Button>
-          <Link to="/register">Novo herói</Link>
-        </Button>
+        {user.role === 'admin' && (
+          <Button>
+            <Link to="/register">Novo herói</Link>
+          </Button>
+        )}
       </Header>
       <S.Heroes>
         {heroes.map(hero => (

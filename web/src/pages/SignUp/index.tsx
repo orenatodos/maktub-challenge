@@ -5,7 +5,7 @@ import { FiUser, FiLock, FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
 
 import Field from '../../components/Form/Field';
-import Select from '../../components/Select';
+import Select from '../../components/Form/Select';
 import Button from '../../components/Button';
 
 import superwomanBackground from '../../assets/superwoman-background.svg';
