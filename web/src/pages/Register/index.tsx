@@ -37,13 +37,12 @@ export default function Register() {
 
   return (
     <>
-      <Header>
+      <Header />
+      <S.Container>
         <Link to="/heroes">
           <FiArrowLeft size={20} />
           Voltar
         </Link>
-      </Header>
-      <S.Container>
         <h1>Cadastrar novo herói</h1>
         <form onSubmit={handleSubmit}>
           <Field

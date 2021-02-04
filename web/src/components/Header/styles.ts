@@ -20,16 +20,6 @@ export const Header = styled.header`
       align-items: center;
       gap: ${theme.spacings.small};
 
-      > a {
-        color: ${theme.colors.primary};
-        display: flex;
-        align-items: center;
-
-        svg {
-          margin-right: ${theme.spacings.xsmall};
-        }
-      }
-
       .logout {
         height: 5.6rem;
         display: flex;

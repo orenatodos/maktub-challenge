@@ -9,11 +9,23 @@ export const Container = styled.main`
     max-width: 60rem;
     margin: 0 auto;
     padding: ${theme.spacings.medium} 0;
+    display: flex;
+    flex-direction: column;
+
+    > a {
+      font-size: 1.8rem;
+      color: ${theme.colors.primary};
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: ${theme.spacings.xsmall};
+      }
+    }
 
     h1 {
       font-size: 3.6rem;
-      text-align: center;
-      margin-bottom: ${theme.spacings.medium};
+      margin: ${theme.spacings.medium} 0;
     }
 
     form {

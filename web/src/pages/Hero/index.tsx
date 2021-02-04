@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import { FiArrowLeft } from 'react-icons/fi';
 
 import api from '../../services/api';
 
 import Header from '../../components/Header';
-import Button from '../../components/Button';
 
 import * as S from './styles';
 
@@ -24,8 +23,6 @@ interface ParamTypes {
 export default function Heroes() {
   const [hero, setHero] = useState({} as Hero);
 
-  const { user } = useAuth();
-
   const { id } = useParams<ParamTypes>();
 
   async function getData() {
@@ -40,16 +37,14 @@ export default function Heroes() {
 
   return (
     <>
-      <Header>
-        {user.role === 'admin' && (
-          <Button>
-            <Link to="/register">Novo herói</Link>
-          </Button>
-        )}
-      </Header>
+      <Header />
       <S.Hero>
         <img src={hero.image} alt={hero.name} />
         <div>
+          <Link to="/heroes">
+            <FiArrowLeft size={20} />
+            Voltar
+          </Link>
           <strong>{hero.name}</strong>
           <p>{hero.short_description}</p>
           <p>{hero.full_description}</p>

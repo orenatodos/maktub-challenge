@@ -4,10 +4,12 @@ import { FiLogOut } from 'react-icons/fi';
 
 import { useAuth } from '../../hooks/useAuth';
 
+import Button from '../Button';
+
 import * as S from './styles';
 
-export default function Header({ children }: PropsWithChildren<unknown>) {
-  const { signOut } = useAuth();
+export default function Header() {
+  const { user, signOut } = useAuth();
 
   return (
     <S.Header>
@@ -15,7 +17,11 @@ export default function Header({ children }: PropsWithChildren<unknown>) {
         Maktub Heroes
       </Link>
       <div>
-        {children}
+        {user.role === 'admin' && (
+          <Button>
+            <Link to="/register">Novo herói</Link>
+          </Button>
+        )}
         <button type="button" className="logout" onClick={signOut}>
           <FiLogOut size={24} />
         </button>

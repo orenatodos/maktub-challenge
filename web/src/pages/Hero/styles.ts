@@ -19,10 +19,22 @@ export const Hero = styled.main`
     > div {
       max-width: 60rem;
 
+      > a {
+        font-size: 1.8rem;
+        color: ${theme.colors.primary};
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: ${theme.spacings.xsmall};
+        }
+      }
+
       strong {
         font-size: 5.6rem;
         display: block;
         position: relative;
+        margin-top: ${theme.spacings.medium};
 
         &::after {
           content: '';
