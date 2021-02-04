@@ -32,7 +32,7 @@ export default class AuthenticateUserService {
       throw new AppError('Incorrect username/password combination.', 401);
     }
 
-    const token = sign({}, `${process.env.SECRET_JWT}`, {
+    const token = sign({}, process.env.SECRET || 'default', {
       subject: user.id,
       expiresIn: '1d',
     });

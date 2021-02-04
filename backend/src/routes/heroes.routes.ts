@@ -3,7 +3,11 @@ import { getRepository } from 'typeorm';
 
 import Hero from '../models/Hero';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const heroesRouter = Router();
+
+heroesRouter.use(ensureAuthenticated);
 
 heroesRouter.get('/', async (request, response) => {
   const heroesRepository = getRepository(Hero);
