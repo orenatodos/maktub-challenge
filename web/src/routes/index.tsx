@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+
+import PrivateRoute from './PrivateRoute';
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
@@ -9,10 +11,10 @@ export default function Routes() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={SignIn} />
-        <Route path="/signup" exact component={SignUp} />
-        <Route path="/heroes" exact component={Heroes} />
-        <Route path="/heroes/:id" exact component={Hero} />
+        <PrivateRoute path="/" exact component={SignIn} />
+        <PrivateRoute path="/signup" exact component={SignUp} />
+        <PrivateRoute path="/heroes" exact component={Heroes} isPrivate />
+        <PrivateRoute path="/heroes/:id" exact component={Hero} isPrivate />
       </Switch>
     </Router>
   );
