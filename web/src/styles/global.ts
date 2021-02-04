@@ -23,7 +23,8 @@ export default createGlobalStyle`
 
   body,
   button,
-  input {
+  input,
+  textarea {
     font: 1.6rem 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
