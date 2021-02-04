@@ -1,4 +1,7 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
+
+import { Button } from '../Button/styles';
 
 export const Header = styled.header`
   ${({ theme }) => css`
@@ -19,6 +22,16 @@ export const Header = styled.header`
       display: flex;
       align-items: center;
       gap: ${theme.spacings.small};
+
+      ${media.lessThan('small')`
+        ${Button}{
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          left: 0;
+          border-radius: 0;
+        }
+      `}
 
       .logout {
         height: 5.6rem;
