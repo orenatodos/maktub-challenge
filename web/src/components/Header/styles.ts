@@ -15,13 +15,35 @@ export const Header = styled.header`
       color: ${theme.colors.primary};
     }
 
-    > a {
-      color: ${theme.colors.primary};
+    > div {
       display: flex;
       align-items: center;
+      gap: ${theme.spacings.small};
 
-      svg {
-        margin-right: ${theme.spacings.xsmall};
+      > a {
+        color: ${theme.colors.primary};
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: ${theme.spacings.xsmall};
+        }
+      }
+
+      .logout {
+        height: 5.6rem;
+        display: flex;
+        align-items: center;
+        color: ${theme.colors.primary};
+        border: 0.2rem solid ${theme.colors.primary};
+        border-radius: ${theme.radius.default};
+        padding: ${theme.spacings.small};
+        transition: background ${theme.transitions.default};
+
+        &:hover {
+          color: ${theme.colors.white};
+          background: ${theme.colors.primary};
+        }
       }
     }
   `}

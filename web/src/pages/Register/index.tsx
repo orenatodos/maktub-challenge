@@ -17,27 +17,30 @@ export default function Register() {
   const [fullDescription, setFullDescription] = useState('');
   const [image, setImage] = useState('');
 
-  const handleSubmit = useCallback(async event => {
-    try {
-      event.preventDefault();
+  const handleSubmit = useCallback(
+    async event => {
+      try {
+        event.preventDefault();
 
-      await api.post('/heroes', {
-        name,
-        shortDescription,
-        fullDescription,
-        image,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
+        await api.post('/heroes', {
+          name,
+          shortDescription,
+          fullDescription,
+          image,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [name, shortDescription, fullDescription, image],
+  );
 
   return (
     <>
       <Header>
         <Link to="/heroes">
           <FiArrowLeft size={20} />
-          Voltar para heróis
+          Voltar
         </Link>
       </Header>
       <S.Container>
