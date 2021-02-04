@@ -1,5 +1,8 @@
-import { Link } from 'react-router-dom';
+import { useCallback, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { FiUser, FiLock, FiLogIn } from 'react-icons/fi';
+
+import { useAuth } from '../../hooks/useAuth';
 
 import Field from '../../components/Form/Field';
 import Button from '../../components/Button';
@@ -9,22 +12,51 @@ import superheroBackground from '../../assets/superhero-background.svg';
 import * as S from './styles';
 
 export default function SignIn() {
+  const history = useHistory();
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { signIn } = useAuth();
+
+  const handleSubmit = useCallback(
+    async event => {
+      try {
+        event.preventDefault();
+
+        await signIn({
+          username,
+          password,
+        });
+
+        history.push('/heroes');
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [signIn, history, username, password],
+  );
+
   return (
     <S.Container>
       <S.Content>
         <h1>Maktub Heroes</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <strong>Faça seu login</strong>
           <Field
             type="text"
-            name="password"
+            name="username"
             placeholder="Username"
+            onChange={event => setUsername(event.target.value)}
+            value={username}
             icon={FiUser}
           />
           <Field
             type="password"
             name="password"
             placeholder="Senha"
+            onChange={event => setPassword(event.target.value)}
+            value={password}
             icon={FiLock}
           />
           <Button type="submit">Entrar</Button>
