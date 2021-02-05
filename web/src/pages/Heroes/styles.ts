@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { Button } from '../../components/Button/styles';
-
 export const Heroes = styled.main`
   ${({ theme }) => css`
     display: grid;
@@ -10,15 +8,21 @@ export const Heroes = styled.main`
     padding: ${theme.spacings.xxlarge} 0;
 
     article {
-      padding: ${theme.spacings.xsmall};
-      border: 0.4rem solid ${theme.colors.primary};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       img {
-        width: 100%;
+        width: 30rem;
+        height: 30rem;
+        border-radius: 50%;
         object-fit: cover;
+        padding: ${theme.spacings.xsmall};
+        border: 0.4rem solid ${theme.colors.primary};
       }
 
       > div {
+        width: 100%;
         padding: ${theme.spacings.small};
         display: flex;
         flex-direction: column;
@@ -30,10 +34,6 @@ export const Heroes = styled.main`
 
         p {
           margin: ${theme.spacings.small} 0;
-        }
-
-        ${Button} {
-          align-content: flex-end;
         }
       }
     }
