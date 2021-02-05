@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { Field } from '../../components/Form/Field/styles';
 import { Button } from '../../components/Button/styles';
@@ -17,6 +17,17 @@ export const Illustration = styled.div`
   `}
 `;
 
+const appearFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px)
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+`;
+
 export const Container = styled.div`
   height: 100vh;
   display: flex;
@@ -30,6 +41,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    animation: ${appearFromRight} 1s;
 
     h1 {
       font: ${theme.font.bold} 5.6rem 'Ubuntu', sans-serif;

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { Field } from '../../components/Form/Field/styles';
 import { Button } from '../../components/Button/styles';
@@ -10,12 +10,24 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50px)
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+`;
+
 export const Content = styled.div`
   ${({ theme }) => css`
     width: 40rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    animation: ${appearFromLeft} 1s;
 
     h1 {
       font: ${theme.font.bold} 5.6rem 'Ubuntu', sans-serif;
