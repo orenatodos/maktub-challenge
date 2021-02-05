@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 export const Hero = styled.main`
   ${({ theme }) => css`
@@ -6,6 +7,10 @@ export const Hero = styled.main`
     display: flex;
     align-items: center;
     gap: ${theme.spacings.xxlarge};
+
+    ${media.lessThan('medium')`
+      flex-direction: column;
+    `}
 
     img {
       width: 40rem;

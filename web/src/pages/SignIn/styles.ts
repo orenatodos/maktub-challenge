@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import media from 'styled-media-query';
 
 import { Field } from '../../components/Form/Field/styles';
 import { Button } from '../../components/Button/styles';
@@ -8,6 +9,10 @@ export const Container = styled.div`
   display: flex;
   align-items: stretch;
   justify-content: space-between;
+
+  ${media.lessThan('medium')`
+    justify-content: center;
+  `}
 `;
 
 const appearFromLeft = keyframes`
@@ -29,6 +34,11 @@ export const Content = styled.div`
     justify-content: center;
     animation: ${appearFromLeft} 1s;
 
+    ${media.lessThan('medium')`
+      text-align: center;
+      align-items: center;
+    `}
+
     h1 {
       font: ${theme.font.bold} 5.6rem 'Ubuntu', sans-serif;
       line-height: 5rem;
@@ -37,6 +47,7 @@ export const Content = styled.div`
     }
 
     form {
+      width: 100%;
       display: flex;
       flex-direction: column;
 
@@ -81,5 +92,9 @@ export const Illustration = styled.div`
     img {
       width: 60rem;
     }
+
+    ${media.lessThan('medium')`
+      display: none;
+    `}
   `}
 `;
